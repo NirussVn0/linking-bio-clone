@@ -1,0 +1,19 @@
+{
+  "name": "@gun-lol-clone/shared",
+  "version": "1.0.0",
+  "description": "Shared types and utilities for gun-lol-clone",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rimraf dist"
+  },
+  "devDependencies": {
+    "rimraf": "^5.0.5",
+    "typescript": "^5.3.3"
+  },
+  "files": [
+    "dist"
+  ]
+}
