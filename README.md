@@ -38,6 +38,12 @@ A modern, interactive web application inspired by gun.lol/zyo.lol featuring stun
 
    ```bash
    pnpm i
+   # Build shared package
+   pnpm build:shared
+   # Build frontend
+   pnpm build:frontend
+   # Build backend
+   pnpm build:backend
    ```
 
 3. **Set up environment variables**

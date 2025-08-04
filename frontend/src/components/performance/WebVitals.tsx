@@ -7,7 +7,7 @@ export function reportWebVitals(metric: any) {
   if (process.env.NODE_ENV === 'development') {
     console.log(metric);
   }
-  
+
   // Send to analytics in production
   if (process.env.NODE_ENV === 'production') {
     // Example: Send to Google Analytics
@@ -22,12 +22,12 @@ export function reportWebVitals(metric: any) {
 export default function WebVitals() {
   useEffect(() => {
     // Dynamically import web-vitals to avoid affecting bundle size
-    import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
-      getCLS(reportWebVitals);
-      getFID(reportWebVitals);
-      getFCP(reportWebVitals);
-      getLCP(reportWebVitals);
-      getTTFB(reportWebVitals);
+    import('web-vitals').then(({ onCLS, onINP, onFCP, onLCP, onTTFB }) => {
+      onCLS(reportWebVitals);
+      onINP(reportWebVitals);
+      onFCP(reportWebVitals);
+      onLCP(reportWebVitals);
+      onTTFB(reportWebVitals);
     });
   }, []);
 
