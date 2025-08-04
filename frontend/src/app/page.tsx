@@ -3,6 +3,7 @@
 import CTASection from '@/components/sections/CTASection';
 import FeaturesSection from '@/components/sections/FeaturesSection';
 import HeroSection from '@/components/sections/HeroSection';
+import ParticleSystem from '@/components/three/ParticleSystem';
 import { useEffect, useRef } from 'react';
 
 export default function Home() {
@@ -70,11 +71,7 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen">
-      <canvas
-        ref={canvasRef}
-        className="fixed inset-0 pointer-events-none z-0"
-        style={{ background: 'transparent' }}
-      />
+      <ParticleSystem />
 
       <div className="relative z-10">
         <HeroSection />
