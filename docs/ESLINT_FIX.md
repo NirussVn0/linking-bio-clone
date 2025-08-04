@@ -1,16 +1,24 @@
-# ESLint Configuration Fix
+# ESLint & Prettier Configuration Fix
 
-This document explains how to fix the ESLint configuration issue you encountered.
+This document explains how to fix the ESLint and Prettier configuration issues you encountered.
 
-## Problem
+## Problems
 
-The error occurred because:
+The errors occurred because:
+
+### ESLint Issues:
 
 1. The root ESLint configuration was trying to extend `@typescript-eslint/recommended`
 2. The TypeScript ESLint packages weren't properly installed or configured at the root level
 3. There was a conflict between the root ESLint config and individual package configs
 
-## Solution
+### Prettier Issues:
+
+1. The `prettier` command wasn't found during pre-commit hook execution
+2. lint-staged was calling `prettier --write` directly instead of `npx prettier --write`
+3. The PATH during hook execution didn't include `node_modules/.bin`
+
+## Solutions
 
 I've implemented the following fixes:
 
@@ -28,9 +36,18 @@ The `lint-staged` configuration now:
 
 - Runs ESLint in the specific package directories
 - Uses the package-specific ESLint configurations
+- Uses `npx prettier --write` instead of `prettier --write`
 - Handles different file types appropriately
 
-### 3. Removed Unnecessary Dependencies
+### 3. Fixed Prettier Command Resolution
+
+All Prettier commands now use `npx prettier` to ensure proper resolution:
+
+- Root package.json format scripts
+- Backend package.json format script
+- lint-staged configuration for all file types
+
+### 4. Removed Unnecessary Dependencies
 
 Removed TypeScript ESLint dependencies from the root package.json since they're handled by individual packages.
 
