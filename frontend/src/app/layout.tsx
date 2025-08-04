@@ -1,3 +1,6 @@
+import SkipLink from "@/components/accessibility/SkipLink";
+import WebVitals from "@/components/performance/WebVitals";
+import Navigation from "@/components/ui/Navigation";
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
@@ -21,6 +24,17 @@ export const metadata: Metadata = {
   authors: [{ name: "Gun.lol Clone Team" }],
   viewport: "width=device-width, initial-scale=1",
   themeColor: "#000000",
+  openGraph: {
+    title: "Gun.lol Clone - Modern Interactive Web Experience",
+    description: "A modern, interactive web application inspired by gun.lol with stunning 3D visuals, smooth animations, and cutting-edge design.",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Gun.lol Clone - Modern Interactive Web Experience",
+    description: "A modern, interactive web application inspired by gun.lol with stunning 3D visuals, smooth animations, and cutting-edge design.",
+  },
 };
 
 export default function RootLayout({
@@ -33,7 +47,12 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased bg-black text-white`}
       >
-        {children}
+        <SkipLink />
+        <Navigation />
+        <main id="main-content" role="main">
+          {children}
+        </main>
+        <WebVitals />
       </body>
     </html>
   );
