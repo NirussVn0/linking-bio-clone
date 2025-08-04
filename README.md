@@ -8,8 +8,6 @@ A modern, interactive web application inspired by gun.lol/zyo.lol featuring stun
 
 [loginpage](Images/loginpage.png)
 
-[taskpage](Images/taskpage.png)
-
 ## 🛠 Tech Stack
 
 ### Frontend
@@ -43,16 +41,14 @@ A modern, interactive web application inspired by gun.lol/zyo.lol featuring stun
    ```
 
 3. **Set up environment variables**
+   - Discord OAuth2 Setup
+4. Go to [Discord Developer Portal](https://discord.com/developers/applications)
+5. Create a new application
+6. Go to OAuth2 settings
+7. Add redirect URI: `http://localhost:3000/auth/discord/callback`
+8. Copy Client ID and Client Secret to your `.env` file
 
-### Discord OAuth2 Setup
-
-1. Go to [Discord Developer Portal](https://discord.com/developers/applications)
-2. Create a new application
-3. Go to OAuth2 settings
-4. Add redirect URI: `http://localhost:3000/auth/discord/callback`
-5. Copy Client ID and Client Secret to your `.env` file
-
-6. **Start the application**
+9. **Start the application**
 
    ```bash
    # Start all services
@@ -63,7 +59,7 @@ A modern, interactive web application inspired by gun.lol/zyo.lol featuring stun
    pnpm dev:frontend   # Frontend on http://localhost:3001
    ```
 
-### Docker Deployment
+## 🐳 Docker Deployment
 
 ```bash
 # Build and run with Docker Compose

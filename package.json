@@ -15,8 +15,8 @@
     "start": "concurrently \"pnpm --filter backend start:prod\" \"pnpm --filter frontend start\"",
     "lint": "pnpm --filter frontend lint && pnpm --filter backend lint",
     "lint:fix": "pnpm --filter frontend lint:fix && pnpm --filter backend lint:fix",
-    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
-    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "format": "npx prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "format:check": "npx prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "test": "pnpm --filter frontend test && pnpm --filter backend test",
     "test:e2e": "pnpm --filter frontend test:e2e",
     "prepare": "husky install"
@@ -31,17 +31,17 @@
   "lint-staged": {
     "frontend/**/*.{ts,tsx,js,jsx}": [
       "cd frontend && npx eslint --fix",
-      "prettier --write"
+      "npx prettier --write"
     ],
     "backend/**/*.{ts,js}": [
       "cd backend && npx eslint --fix",
-      "prettier --write"
+      "npx prettier --write"
     ],
     "shared/**/*.{ts,js}": [
-      "prettier --write"
+      "npx prettier --write"
     ],
     "*.{json,md}": [
-      "prettier --write"
+      "npx prettier --write"
     ]
   },
   "engines": {
