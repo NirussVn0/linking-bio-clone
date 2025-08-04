@@ -1,4 +1,5 @@
 import SkipLink from "@/components/accessibility/SkipLink";
+import ErrorBoundary from "@/components/dev/ErrorBoundary";
 import WebVitals from "@/components/performance/WebVitals";
 import Navigation from "@/components/ui/Navigation";
 import type { Metadata, Viewport } from "next";
@@ -54,7 +55,9 @@ export default function RootLayout({
         <SkipLink />
         <Navigation />
         <main id="main-content" role="main">
-          {children}
+          <ErrorBoundary>
+            {children}
+          </ErrorBoundary>
         </main>
         <WebVitals />
       </body>
