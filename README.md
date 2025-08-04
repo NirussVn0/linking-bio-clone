@@ -77,6 +77,24 @@ docker-compose -f docker-compose.prod.yml up -d
 4. Test your changes
 5. Open a Pull Request
 
+## 🔧 Troubleshooting
+
+If you encounter issues during development:
+
+- **ESLint configuration errors**: See [docs/ESLINT_FIX.md](docs/ESLINT_FIX.md)
+- **Prettier command not found**: See [docs/PRETTIER_FIX.md](docs/PRETTIER_FIX.md)
+- **Pre-commit hook failures**: Run the fix scripts in the `scripts/` directory
+
+### Quick Fixes
+
+```bash
+# Fix ESLint issues
+scripts/fix-eslint.sh  # or .bat on Windows
+
+# Test Prettier configuration
+scripts/test-prettier.sh  # or .bat on Windows
+```
+
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
