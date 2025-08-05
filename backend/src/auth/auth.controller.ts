@@ -1,8 +1,8 @@
-import { Controller, Get, Post, UseGuards, Req, Res, HttpStatus } from '@nestjs/common';
+import { Controller, Get, HttpStatus, Post, Req, Res, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { Response } from 'express';
-import { AuthService } from './auth.service';
+import type { Response } from 'express';
 import { UserDocument } from '../schemas/user.schema';
+import { AuthService } from './auth.service';
 
 @Controller('auth')
 export class AuthController {
@@ -19,7 +19,7 @@ export class AuthController {
   async discordCallback(@Req() req: any, @Res() res: Response) {
     const user: UserDocument = req.user;
     const token = await this.authService.generateJwtToken(user);
-    
+
     // Set HTTP-only cookie
     res.cookie('access_token', token, {
       httpOnly: true,
