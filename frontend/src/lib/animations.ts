@@ -119,14 +119,16 @@ export const morphPath = (targets: any, path: string) => {
 export const typewriter = (targets: any, text: string) => {
   const element = targets as HTMLElement;
   element.innerHTML = '';
-  
+
+  const animationTarget = { value: 0 };
+
   return anime({
-    targets: { value: 0 },
+    targets: animationTarget,
     value: text.length,
     duration: text.length * 50,
     easing: 'linear',
-    update: (anim) => {
-      const progress = Math.floor(anim.animatables[0].target.value);
+    update: () => {
+      const progress = Math.floor(animationTarget.value);
       element.innerHTML = text.substring(0, progress);
     },
   });

@@ -5,9 +5,9 @@ import * as THREE from 'three';
 
 export default function Scene3D() {
   const mountRef = useRef<HTMLDivElement>(null);
-  const sceneRef = useRef<THREE.Scene>();
-  const rendererRef = useRef<THREE.WebGLRenderer>();
-  const frameRef = useRef<number>();
+  const sceneRef = useRef<THREE.Scene | null>(null);
+  const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
+  const frameRef = useRef<number | null>(null);
 
   useEffect(() => {
     if (!mountRef.current) return;
@@ -33,26 +33,26 @@ export default function Scene3D() {
     ];
 
     const materials = [
-      new THREE.MeshBasicMaterial({ 
-        color: 0xff0080, 
+      new THREE.MeshBasicMaterial({
+        color: 0xff0080,
         wireframe: true,
         transparent: true,
         opacity: 0.8
       }),
-      new THREE.MeshBasicMaterial({ 
-        color: 0x00ff80, 
+      new THREE.MeshBasicMaterial({
+        color: 0x00ff80,
         wireframe: true,
         transparent: true,
         opacity: 0.8
       }),
-      new THREE.MeshBasicMaterial({ 
-        color: 0x8000ff, 
+      new THREE.MeshBasicMaterial({
+        color: 0x8000ff,
         wireframe: true,
         transparent: true,
         opacity: 0.8
       }),
-      new THREE.MeshBasicMaterial({ 
-        color: 0x0080ff, 
+      new THREE.MeshBasicMaterial({
+        color: 0x0080ff,
         wireframe: true,
         transparent: true,
         opacity: 0.8
@@ -113,8 +113,8 @@ export default function Scene3D() {
   }, []);
 
   return (
-    <div 
-      ref={mountRef} 
+    <div
+      ref={mountRef}
       className="fixed inset-0 pointer-events-none z-0"
       style={{ background: 'transparent' }}
     />

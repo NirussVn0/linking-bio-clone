@@ -5,9 +5,9 @@ import * as THREE from 'three';
 
 export default function ParticleSystem() {
   const mountRef = useRef<HTMLDivElement>(null);
-  const sceneRef = useRef<THREE.Scene>();
-  const rendererRef = useRef<THREE.WebGLRenderer>();
-  const frameRef = useRef<number>();
+  const sceneRef = useRef<THREE.Scene | null>(null);
+  const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
+  const frameRef = useRef<number | null>(null);
 
   useEffect(() => {
     if (!mountRef.current) return;
@@ -39,7 +39,7 @@ export default function ParticleSystem() {
 
     for (let i = 0; i < particleCount; i++) {
       const i3 = i * 3;
-      
+
       // Random positions
       positions[i3] = (Math.random() - 0.5) * 20;
       positions[i3 + 1] = (Math.random() - 0.5) * 20;
@@ -79,10 +79,10 @@ export default function ParticleSystem() {
       frameRef.current = requestAnimationFrame(animate);
 
       const positions = particles.geometry.attributes.position.array as Float32Array;
-      
+
       for (let i = 0; i < particleCount; i++) {
         const i3 = i * 3;
-        
+
         // Update positions with velocities
         positions[i3] += velocities[i3];
         positions[i3 + 1] += velocities[i3 + 1];
@@ -126,8 +126,8 @@ export default function ParticleSystem() {
   }, []);
 
   return (
-    <div 
-      ref={mountRef} 
+    <div
+      ref={mountRef}
       className="fixed inset-0 pointer-events-none z-0"
       style={{ background: 'transparent' }}
     />

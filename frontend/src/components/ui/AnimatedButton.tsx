@@ -1,7 +1,7 @@
 'use client';
 
+import { buttonClick, buttonHover, buttonLeave } from '@/lib/animations';
 import { useRef } from 'react';
-import { buttonHover, buttonLeave, buttonClick } from '@/lib/animations';
 
 interface AnimatedButtonProps {
   children: React.ReactNode;
@@ -9,6 +9,8 @@ interface AnimatedButtonProps {
   className?: string;
   variant?: 'primary' | 'secondary' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
+  type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
 }
 
 export default function AnimatedButton({
@@ -17,11 +19,13 @@ export default function AnimatedButton({
   className = '',
   variant = 'primary',
   size = 'md',
+  type = 'button',
+  disabled = false,
 }: AnimatedButtonProps) {
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   const baseClasses = 'font-semibold rounded-full transition-all duration-300 cursor-pointer';
-  
+
   const variantClasses = {
     primary: 'glass glow text-white',
     secondary: 'bg-white/10 text-white border border-white/20',
@@ -58,6 +62,8 @@ export default function AnimatedButton({
   return (
     <button
       ref={buttonRef}
+      type={type}
+      disabled={disabled}
       className={`${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}

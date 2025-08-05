@@ -8,7 +8,7 @@ import { useEffect, useRef } from 'react';
 export default function HeroSection() {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
-  const buttonRef = useRef<HTMLButtonElement>(null);
+  const buttonRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const timeline = anime.timeline({
