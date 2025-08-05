@@ -28,7 +28,7 @@ export default function Navigation() {
   }, []);
 
   const handleLoginClick = () => {
-    window.location.href = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'}/auth/discord`;
+    window.location.href = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'}/api/auth/discord`;
   };
 
   return (
