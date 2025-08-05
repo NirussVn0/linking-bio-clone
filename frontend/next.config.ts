@@ -5,22 +5,23 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizeCss: true,
     optimizePackageImports: ['animejs', 'three'],
-    // Turbopack configuration for better HMR stability
-    turbo: {
-      rules: {
-        '*.svg': {
-          loaders: ['@svgr/webpack'],
-          as: '*.js',
-        },
-      },
-      resolveAlias: {
-        // Ensure consistent React resolution in monorepo
-        'react': 'react',
-        'react-dom': 'react-dom',
-      },
-    },
     // Improve HMR stability with React 19
     reactCompiler: false,
+  },
+
+  // Turbopack configuration (stable as of Next.js 15)
+  turbopack: {
+    rules: {
+      '*.svg': {
+        loaders: ['@svgr/webpack'],
+        as: '*.js',
+      },
+    },
+    resolveAlias: {
+      // Ensure consistent React resolution in monorepo
+      'react': 'react',
+      'react-dom': 'react-dom',
+    },
   },
 
   // Image optimization

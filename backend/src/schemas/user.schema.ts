@@ -26,6 +26,6 @@ export class User {
 
 export const UserSchema = SchemaFactory.createForClass(User);
 
-UserSchema.index({ discordId: 1 });
+// Note: discordId already has unique index from @Prop({ unique: true })
 UserSchema.index({ username: 1 });
 UserSchema.index({ email: 1 });
